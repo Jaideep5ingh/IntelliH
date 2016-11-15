@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".IntroSlider.WelcomeActivity"></activity>
+        <activity android:name=".IntroSlider.WelcomeActivity" />
+        <activity android:name=".SplashScreen.SplashScreen"></activity>
     </application>
 
 </manifest>
