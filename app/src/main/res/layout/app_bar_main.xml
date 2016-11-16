@@ -23,18 +23,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabGravity="fill"
+            android:id="@+id/tabLayout"
             app:tabIndicatorHeight="4dp"
             app:tabMode="fixed">
 
-            <android.support.design.widget.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lights" />
-
-            <android.support.design.widget.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fans"/>
         </android.support.design.widget.TabLayout>
 
     </android.support.design.widget.AppBarLayout>
