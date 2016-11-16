@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Minor_T2.iml" filepath="$PROJECT_DIR$/Minor_T2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IntelliH-yash.iml" filepath="$PROJECT_DIR$/IntelliH-yash.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
