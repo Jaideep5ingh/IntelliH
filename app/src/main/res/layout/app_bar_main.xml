@@ -29,12 +29,14 @@
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:icon="@drawable/custom_ic_bulb"
                 android:text="Lights" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lights" />
+                android:text="Fans"
+                android:icon="@drawable/custom_ic_fan"/>
         </android.support.design.widget.TabLayout>
 
     </android.support.design.widget.AppBarLayout>
