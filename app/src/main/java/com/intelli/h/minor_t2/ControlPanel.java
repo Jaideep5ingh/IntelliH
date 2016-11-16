@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.GridLayout;
+import android.widget.GridView;
 
 public class ControlPanel extends AppCompatActivity {
-
+    GridView gridView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,9 @@ public class ControlPanel extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        gridView = (GridView) findViewById(R.id.controlGrid);
+        gridView.setAdapter(new GridAdapter(this));
     }
 
 }

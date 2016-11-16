@@ -9,7 +9,7 @@
     tools:context="com.intelli.h.minor_t2.ControlPanel"
     tools:showIn="@layout/activity_control_panel">
 
-    <GridLayout
+    <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/controlGrid"/>
