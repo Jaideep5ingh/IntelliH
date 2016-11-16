@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
+    android:background="#fff"
     android:layout_marginBottom="8dp"
     android:orientation="vertical">
 
@@ -40,10 +41,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:fabSize="mini"
+            android:clickable="true"
+            app:rippleColor="#fff"
             android:src="@drawable/ventilating_fan"
             app:layout_anchor="@id/textView"
             app:layout_anchorGravity="end" />
 
     </android.support.design.widget.CoordinatorLayout>
 
-</LinearLayout>
+</android.support.v7.widget.CardView>

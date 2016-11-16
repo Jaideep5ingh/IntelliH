@@ -31,7 +31,7 @@ public class LightFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_light, container, false);
         context = view.getContext();
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        FanRecyclerViewAdapter mAdapter = new FanRecyclerViewAdapter(context);
+        LightRecyclerViewAdapter mAdapter = new LightRecyclerViewAdapter(context);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

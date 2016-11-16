@@ -5,22 +5,10 @@
     android:layout_height="match_parent"
     tools:context="com.intelli.h.minor_t2.TabFragments.FanFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:paddingTop="8dp"
+        android:clipToPadding="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Fan Fragment" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
+        android:layout_height="match_parent" />
 </FrameLayout>
