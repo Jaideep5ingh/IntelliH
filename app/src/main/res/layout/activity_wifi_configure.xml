@@ -39,6 +39,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:text="CONNECT via Wifi"
-        android:id="@+id/button" />
+        android:id="@+id/connectButton" />
 
 </LinearLayout>
