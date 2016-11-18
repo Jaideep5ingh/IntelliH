@@ -6,13 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.intelli.h.minor_t2.WifiTether.HttpRequestAsyncTask;
-import com.intelli.h.minor_t2.WifiTether.WifiConfigure;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +51,7 @@ public class GridAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View view = inflater.inflate(R.layout.control_panel_item, parent, false);
+        final View view = inflater.inflate(R.layout.control_panel_item, parent, false);
         final ImageButton imageButton = (ImageButton) view.findViewById(R.id.bulb_image_button);
         LinearLayout switcher = (LinearLayout) view.findViewById(R.id.switcher);
         TextView textView = (TextView) view.findViewById(R.id.bulbName);
@@ -68,13 +66,13 @@ public class GridAdapter extends BaseAdapter {
                 flag = !flag;
                 if (!flag) {
                     new HttpRequestAsyncTask(
-                            v.getContext(), "13", "192.168.1.10", "80", "pin"
+                            view.getContext(), "13", "192.168.1.10", "80", "pin"
                     ).execute();
                     imageButton.setBackgroundColor(v.getResources().getColor(R.color.colorAccent));
                     imageButton.setImageResource(R.drawable.ic_lightbulb_lit);
                 } else {
                     new HttpRequestAsyncTask(
-                            v.getContext(), "13", "192.168.1.10", "80", "pin"
+                            view.getContext(), "13", "192.168.1.10", "80", "pin"
                     ).execute();
                     imageButton.setBackgroundColor(v.getResources().getColor(black));
                     imageButton.setImageResource(R.drawable.ic_lightbulb);

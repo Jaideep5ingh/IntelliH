@@ -3,6 +3,7 @@ package com.intelli.h.minor_t2.WifiTether;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -19,11 +20,11 @@ import java.net.URISyntaxException;
 
 public class HttpRequestAsyncTask extends AsyncTask<Void, Void, Void> {
 
-    private String requestReply, ipAddress, portNumber;
-    private Context context;
-    private AlertDialog alertDialog;
-    private String parameter;
-    private String parameterValue;
+    public String requestReply, ipAddress, portNumber;
+    public Context context;
+    public AlertDialog alertDialog;
+    public String parameter;
+    public String parameterValue;
 
     public HttpRequestAsyncTask(Context context, String parameterValue, String ipAddress, String portNumber, String parameter) {
         this.context = context;
@@ -88,17 +89,19 @@ public class HttpRequestAsyncTask extends AsyncTask<Void, Void, Void> {
             // HTTP error
             serverResponse = e.getMessage();
             e.printStackTrace();
+            Log.e("1", e.getMessage());
         } catch (IOException e) {
             // IO error
             serverResponse = e.getMessage();
             e.printStackTrace();
+            Log.e("2", e.getMessage() + "-cause-" + e.getCause());
         } catch (URISyntaxException e) {
             // URL syntax error
             serverResponse = e.getMessage();
             e.printStackTrace();
+            Log.e("3", e.getMessage());
         }
         // return the server's reply/response text
         return serverResponse;
     }
-
 }

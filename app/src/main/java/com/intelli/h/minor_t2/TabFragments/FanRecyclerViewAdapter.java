@@ -1,6 +1,10 @@
 package com.intelli.h.minor_t2.TabFragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,14 +12,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.intelli.h.minor_t2.BT_Integration.DeviceList;
+import com.intelli.h.minor_t2.ControlPanel2;
 import com.intelli.h.minor_t2.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by YASH on 16-Nov-16.
- */
 
 public class FanRecyclerViewAdapter extends RecyclerView.Adapter<FanRecyclerViewAdapter.SexyViewHolder> {
 
@@ -45,6 +47,29 @@ public class FanRecyclerViewAdapter extends RecyclerView.Adapter<FanRecyclerView
     public void onBindViewHolder(FanRecyclerViewAdapter.SexyViewHolder holder, int position) {
         holder.roomName.setText(roomNames.get(position));
         holder.imageView.setImageResource(imageAssets[position]);
+
+        holder.roomLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Pick a Way to connect")
+                        .setItems(R.array.connectionType, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (which == 0) {
+                                    context.startActivity(new Intent(context, ControlPanel2.class));
+                                    dialog.dismiss();
+                                } else if (which == 1) {
+                                    dialog.dismiss();
+                                    context.startActivity(new Intent(context, DeviceList.class));
+                                }
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+
     }
 
     @Override
@@ -55,9 +80,11 @@ public class FanRecyclerViewAdapter extends RecyclerView.Adapter<FanRecyclerView
     public class SexyViewHolder extends RecyclerView.ViewHolder {
         public TextView roomName;
         public ImageView imageView;
+        public CardView roomLayout;
 
         public SexyViewHolder(View itemView) {
             super(itemView);
+            roomLayout = (CardView) itemView.findViewById(R.id.roomLayout);
             roomName = (TextView) itemView.findViewById(R.id.textView);
             imageView = (ImageView) itemView.findViewById(R.id.roomImage);
 
