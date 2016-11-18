@@ -22,31 +22,11 @@
         android:stretchMode="columnWidth"
         android:verticalSpacing="10dp" />
 
-    <LinearLayout
-        android:id="@+id/bottom"
-        android:layout_gravity="bottom"
-        android:gravity="center"
+    <Button
+        android:id="@+id/discnt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="DISCONNECT" />
 
-        <Button
-            android:id="@+id/on"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ON" />
-
-        <Button
-            android:id="@+id/discnt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DISCONNECT" />
-
-        <Button
-            android:id="@+id/off"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="OFF" />
-    </LinearLayout>
 
 </LinearLayout>

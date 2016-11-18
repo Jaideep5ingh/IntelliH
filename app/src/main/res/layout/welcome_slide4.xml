@@ -11,19 +11,21 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="@dimen/img_width_height"
-            android:layout_height="@dimen/img_width_height"
-            android:src="@drawable/fee_ws"
-            android:layout_marginBottom="10dp"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/slide_4_title"
+            android:gravity="center"
+            android:text="Flexible Control \nvia\n Wifi or Bluetooth"
+            android:layout_marginBottom="16dp"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/img_width_height"
+            android:src="@drawable/wifi_or_bluetooth"
+            android:layout_marginBottom="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,7 +33,7 @@
             android:layout_marginTop="20dp"
             android:paddingLeft="@dimen/desc_padding"
             android:paddingRight="@dimen/desc_padding"
-            android:text="@string/slide_4_desc"
+            android:text="Control your appliances using either Bluetooth or Wifi."
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_desc" />
