@@ -44,6 +44,7 @@
             app:fabSize="mini"
             android:clickable="true"
             app:rippleColor="#fff"
+            android:id="@+id/RunAllFans"
             android:src="@drawable/ventilating_fan"
             app:layout_anchor="@id/textView"
             app:layout_anchorGravity="end" />
