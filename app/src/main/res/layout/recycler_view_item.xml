@@ -41,10 +41,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:fabSize="mini"
             android:clickable="true"
             app:rippleColor="#fff"
-            android:id="@+id/RunAllFans"
+            android:id="@+id/lights"
+            app:fabSize="mini"
+            android:src="@drawable/ic_lightbulb"
+            app:layout_anchor="@id/textView"
+            app:layout_anchorGravity="end" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:rippleColor="#fff"
+            android:layout_marginRight="64dp"
+            android:id="@+id/fans"
+            app:fabSize="mini"
             android:src="@drawable/ventilating_fan"
             app:layout_anchor="@id/textView"
             app:layout_anchorGravity="end" />

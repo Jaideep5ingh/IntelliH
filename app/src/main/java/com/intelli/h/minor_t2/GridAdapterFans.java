@@ -15,20 +15,19 @@ import com.intelli.h.minor_t2.WifiTether.HttpRequestAsyncTask;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import static android.R.color.black;
 
-public class GridAdapter extends BaseAdapter {
+public class GridAdapterFans extends BaseAdapter {
 
     private List<String> bulbList = new ArrayList<>();
     private LayoutInflater inflater;
     private Context context;
 
-    public GridAdapter(Context context) {
+    public GridAdapterFans(Context context) {
 
-        bulbList.add("Bulb 1");
-        bulbList.add("Bulb 2");
-        bulbList.add("Bulb 3");
+        bulbList.add("Fan 1");
+        bulbList.add("Fan 2");
+        bulbList.add("Fan 3");
         this.context = context;
         inflater = ((Activity) context).getLayoutInflater();
     }
@@ -66,13 +65,13 @@ public class GridAdapter extends BaseAdapter {
                 flag = !flag;
                 if (!flag) {
                     new HttpRequestAsyncTask(
-                            view.getContext(), "13", "192.168.1.11", "80", "pin"
+                            view.getContext(), "12", "192.168.1.11", "80", "pin"
                     ).execute();
                     imageButton.setBackgroundColor(v.getResources().getColor(R.color.colorAccent));
                     imageButton.setImageResource(R.drawable.ic_lightbulb_lit);
                 } else {
                     new HttpRequestAsyncTask(
-                            view.getContext(), "13", "192.168.1.11", "80", "pin"
+                            view.getContext(), "12", "192.168.1.11", "80", "pin"
                     ).execute();
                     imageButton.setBackgroundColor(v.getResources().getColor(black));
                     imageButton.setImageResource(R.drawable.ic_lightbulb);

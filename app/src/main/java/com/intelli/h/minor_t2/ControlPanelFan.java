@@ -1,10 +1,14 @@
 package com.intelli.h.minor_t2;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
 import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -12,17 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.bluetooth.BluetoothSocket;
-import android.content.Intent;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.ProgressDialog;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.os.AsyncTask;
-import android.widget.GridView;
 
 import com.intelli.h.minor_t2.BT_Integration.DeviceList;
 
@@ -34,7 +32,7 @@ import java.util.UUID;
 import static android.R.color.black;
 
 
-public class ControlPanel extends AppCompatActivity {
+public class ControlPanelFan extends AppCompatActivity {
     Button Discnt;
     GridView gridView;
     String address = null;
@@ -57,59 +55,74 @@ public class ControlPanel extends AppCompatActivity {
 
         new ConnectBT().execute();
 
-        setContentView(R.layout.activity_control_panel);
+        setContentView(R.layout.activity_control_panel_fan);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Discnt = (Button) findViewById(R.id.discnt);
+        Discnt = (Button)findViewById(R.id.discnt);
 
         gridView = (GridView) findViewById(R.id.controlGrid);
         gridView.setAdapter(new GridAdapter(this));
 
 
-        Discnt.setOnClickListener(new View.OnClickListener() {
+        Discnt.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Disconnect(); //close connection
             }
         });
     }
 
-    private void Disconnect() {
-        if (btSocket != null) //If the btSocket is busy
+    private void Disconnect()
+    {
+        if (btSocket!=null) //If the btSocket is busy
         {
-            try {
+            try
+            {
                 btSocket.close(); //close connection
-            } catch (IOException e) {
-                msg("Error");
             }
+            catch (IOException e)
+            { msg("Error");}
         }
         finish(); //return to the first layout
 
     }
 
-    private void turnOffLed() {
-        if (btSocket != null) {
-            try {
+    private void turnOffLed()
+    {
+        if (btSocket!=null)
+        {
+            try
+            {
                 btSocket.getOutputStream().write("0".toString().getBytes());
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 msg("Error");
             }
         }
     }
 
-    private void turnOnLed() {
-        if (btSocket != null) {
-            try {
+    private void turnOnLed()
+    {
+        if (btSocket!=null)
+        {
+            try
+            {
                 btSocket.getOutputStream().write("1".toString().getBytes());
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 msg("Error");
             }
         }
     }
 
     // fast way to call Toast
-    private void msg(String s) {
-        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+    private void msg(String s)
+    {
+        Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
     }
 
     private class ConnectBT extends AsyncTask<Void, Void, Void>  // UI thread
@@ -118,7 +131,7 @@ public class ControlPanel extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            progress = ProgressDialog.show(ControlPanel.this, "Connecting...", "Please wait!!!");  //show a progress dialog
+            progress = ProgressDialog.show(ControlPanelFan.this, "Connecting...", "Please wait!!!");  //show a progress dialog
         }
 
         @Override
@@ -142,28 +155,17 @@ public class ControlPanel extends AppCompatActivity {
         {
             super.onPostExecute(result);
 
-            if (!ConnectSuccess) {
+            if (!ConnectSuccess)
+            {
                 msg("Connection Failed. Is it a SPP Bluetooth? Try again.");
                 finish();
-            } else {
+            }
+            else
+            {
                 msg("Connected.");
                 isBtConnected = true;
             }
             progress.dismiss();
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if (isBtConnected) {
-            try {
-                btSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                btSocket = null;
-            }
         }
     }
 
@@ -200,8 +202,8 @@ public class ControlPanel extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            View view = inflater.inflate(R.layout.control_panel_item, parent, false);
-            final ImageButton imageButton = (ImageButton) view.findViewById(R.id.bulb_image_button);
+            View view = inflater.inflate(R.layout.control_panel_item,parent,false);
+            final ImageButton imageButton = (ImageButton)view.findViewById(R.id.bulb_image_button);
             LinearLayout switcher = (LinearLayout) view.findViewById(R.id.switcher);
             TextView textView = (TextView) view.findViewById(R.id.bulbName);
             textView.setText(bulbList.get(position));
@@ -209,15 +211,14 @@ public class ControlPanel extends AppCompatActivity {
             imageButton.setImageResource(R.drawable.ic_lightbulb);
             imageButton.setOnClickListener(new View.OnClickListener() {
                 boolean flag = true;
-
                 @Override
                 public void onClick(View v) {
                     flag = !flag;
-                    if (!flag) {
+                    if (!flag){
                         imageButton.setBackgroundColor(v.getResources().getColor(R.color.colorAccent));
                         imageButton.setImageResource(R.drawable.ic_lightbulb_lit);
                         turnOnLed();
-                    } else {
+                    }else{
                         imageButton.setBackgroundColor(v.getResources().getColor(black));
                         imageButton.setImageResource(R.drawable.ic_lightbulb);
                         turnOffLed();
@@ -228,4 +229,4 @@ public class ControlPanel extends AppCompatActivity {
             return view;
         }
     }
-}
+    }
