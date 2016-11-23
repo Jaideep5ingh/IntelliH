@@ -14,4 +14,5 @@
         android:layout_height="match_parent"
         android:background="#eee"
         android:id="@+id/view_pager"/>
+
 </RelativeLayout>

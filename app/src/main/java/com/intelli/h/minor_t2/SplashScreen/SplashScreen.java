@@ -22,14 +22,11 @@ public class SplashScreen extends Activity {
              * Showing splash screen with a timer. This will be useful when you
              * want to show case your app logo / company
              */
-
             @Override
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                Intent i = new Intent(SplashScreen.this, com.intelli.h.minor_t2.IntroSlider.WelcomeActivity.class);
-                startActivity(i);
-
+                startActivity(new Intent(SplashScreen.this, com.intelli.h.minor_t2.IntroSlider.WelcomeActivity.class));
                 // close this activity
                 finish();
             }
