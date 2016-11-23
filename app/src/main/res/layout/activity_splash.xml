@@ -5,6 +5,13 @@
     android:background="@drawable/side_nav_bar">
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:alpha="0.6"
+        android:src="@drawable/backdrop"/>
+    <ImageView
         android:id="@+id/imgLogo"
         android:layout_width="150dp"
         android:layout_height="150dp"
