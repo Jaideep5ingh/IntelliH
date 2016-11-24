@@ -3,7 +3,9 @@ package com.intelli.h.minor_t2.WifiTether;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -22,18 +24,11 @@ public class HttpRequestAsyncTask extends AsyncTask<Void, Void, Void> {
 
     public String requestReply, ipAddress, portNumber;
     public Context context;
-    public AlertDialog alertDialog;
     public String parameter;
     public String parameterValue;
 
     public HttpRequestAsyncTask(Context context, String parameterValue, String ipAddress, String portNumber, String parameter) {
         this.context = context;
-
-        alertDialog = new AlertDialog.Builder(this.context)
-                .setTitle("HTTP Response From IP Address:")
-                .setCancelable(true)
-                .create();
-
         this.ipAddress = ipAddress;
         this.parameterValue = parameterValue;
         this.portNumber = portNumber;
@@ -42,28 +37,18 @@ public class HttpRequestAsyncTask extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... voids) {
-        alertDialog.setMessage("Data sent, waiting for reply from server...");
-        if (!alertDialog.isShowing()) {
-            alertDialog.show();
-        }
         requestReply = sendRequest(parameterValue, ipAddress, portNumber, parameter);
         return null;
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        alertDialog.setMessage(requestReply);
-        if (!alertDialog.isShowing()) {
-            alertDialog.show();
-        }
+        Toast.makeText(context, requestReply, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onPreExecute() {
-        alertDialog.setMessage("Sending data to server, please wait...");
-        if (!alertDialog.isShowing()) {
-            alertDialog.show();
-        }
+        Toast.makeText(context, "Sending data to server, please wait...", Toast.LENGTH_SHORT).show();
     }
 
     public String sendRequest(String parameterValue, String ipAddress, String portNumber, String parameterName) {

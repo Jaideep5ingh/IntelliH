@@ -2,6 +2,8 @@ package com.intelli.h.minor_t2;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +14,15 @@ import android.widget.TextView;
 
 import com.intelli.h.minor_t2.WifiTether.HttpRequestAsyncTask;
 
+import java.math.BigInteger;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.R.color.black;
+import static android.content.Context.WIFI_SERVICE;
 
 public class GridAdapterFans extends BaseAdapter {
 
@@ -56,7 +63,7 @@ public class GridAdapterFans extends BaseAdapter {
         TextView textView = (TextView) view.findViewById(R.id.bulbName);
         textView.setText(bulbList.get(position));
         imageButton.setBackgroundColor(view.getResources().getColor(black));
-        imageButton.setImageResource(R.drawable.ic_lightbulb);
+        imageButton.setImageResource(R.drawable.ventilating_fan);
         imageButton.setOnClickListener(new View.OnClickListener() {
             boolean flag = true;
 
@@ -65,16 +72,16 @@ public class GridAdapterFans extends BaseAdapter {
                 flag = !flag;
                 if (!flag) {
                     new HttpRequestAsyncTask(
-                            view.getContext(), "12", "192.168.1.11", "80", "pin"
+                            view.getContext(), "12", "192.168.43.208", "80", "pin"
                     ).execute();
                     imageButton.setBackgroundColor(v.getResources().getColor(R.color.colorAccent));
-                    imageButton.setImageResource(R.drawable.ic_lightbulb_lit);
+                    imageButton.setImageResource(R.drawable.ventilating_fan_lit);
                 } else {
                     new HttpRequestAsyncTask(
-                            view.getContext(), "12", "192.168.1.11", "80", "pin"
+                            view.getContext(), "12", "192.168.43.208", "80", "pin"
                     ).execute();
                     imageButton.setBackgroundColor(v.getResources().getColor(black));
-                    imageButton.setImageResource(R.drawable.ic_lightbulb);
+                    imageButton.setImageResource(R.drawable.ventilating_fan);
                 }
 
             }

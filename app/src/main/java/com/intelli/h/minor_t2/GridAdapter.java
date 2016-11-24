@@ -66,13 +66,13 @@ public class GridAdapter extends BaseAdapter {
                 flag = !flag;
                 if (!flag) {
                     new HttpRequestAsyncTask(
-                            view.getContext(), "13", "192.168.1.11", "80", "pin"
+                            view.getContext(), "13", "192.168.43.208", "80", "pin"
                     ).execute();
                     imageButton.setBackgroundColor(v.getResources().getColor(R.color.colorAccent));
                     imageButton.setImageResource(R.drawable.ic_lightbulb_lit);
                 } else {
                     new HttpRequestAsyncTask(
-                            view.getContext(), "13", "192.168.1.11", "80", "pin"
+                            view.getContext(), "13", "192.168.43.208", "80", "pin"
                     ).execute();
                     imageButton.setBackgroundColor(v.getResources().getColor(black));
                     imageButton.setImageResource(R.drawable.ic_lightbulb);
